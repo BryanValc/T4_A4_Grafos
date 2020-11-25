@@ -1,5 +1,44 @@
 import java.util.Scanner;
 
+class Menu{
+	static Scanner input = new Scanner(System.in);
+	public static int validacionNatural() {
+		int ret = 0;
+		boolean err = false;
+		do {
+			try {
+				ret = input.nextInt();
+			} catch (java.util.InputMismatchException e) {
+				System.out.println("entrada no valida, intente de nuevo:");
+				input.nextLine();
+				err=true;
+			}
+			if (ret>0) {
+				err=false;
+			}else {
+				System.out.println("solo números naturales");
+				err=true;
+			}
+		}while(err);
+		return ret;
+	}
+	public static int validacionNatural(String prompt) {
+		System.out.println(prompt);
+		return validacionNatural();
+	}
+	public static void mostrarMenu(String[] opciones) {
+		System.out.println();
+		for (int i = 0; i < opciones.length; i++) {
+			System.out.println((i+1)+")"+opciones[i]);
+		}
+		System.out.println((opciones.length+1)+")Salir\n");
+	}
+	public static void mostrarMenu(String[] opciones,String prompt) {
+		System.out.println("\n"+prompt);
+		mostrarMenu(opciones);
+	}
+}//class Menu
+
 class Vertice {
 	private String nombre;
     private int numVertice;
