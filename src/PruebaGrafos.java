@@ -294,6 +294,64 @@ class NodoPila{
 public class PruebaGrafos {
 	
 	public static void main(String[] args) {
+		
+		Scanner input = new Scanner (System.in);
+		boolean salir=false;
+		String v1, v2;
+		String opciones[]= {"Añadir un vertice","Añadir un arco","Saber si 2 vertices son adyacentes","Recorrer relaciones de un vertice"};
+		GrafoMatriz g = new GrafoMatriz(Menu.validacionNatural("Maximo de vertices: "));
+		
+		do {
+			Menu.mostrarMenu(opciones);
+			int opc = Menu.validacionNatural();
+			if (opc==(opciones.length+1)) {
+				salir=true;
+			}else {
+				switch (opc) {
+				case 1:
+					System.out.println("Nombre del vertice:");
+					String nom=input.nextLine();
+					g.nuevoVertice(nom);
+					break;
+				case 2:
+					System.out.println("Nombre del primer vertice: ");
+					v1=input.nextLine();
+					System.out.println("Nombre del segundo vertice: ");
+					v2=input.nextLine();
+					try {
+						g.nuevoArco(v1, v2);
+						System.out.println("Arco añadido");
+					} catch (Exception e) {
+						System.out.println("Error, deben existir ambos vertices");
+					}
+					break;
+				case 3:
+					System.out.println("Nombre del primer vertice: ");
+					v1=input.nextLine();
+					System.out.println("Nombre del segundo vertice: ");
+					v2=input.nextLine();
+					try {
+						System.out.println(g.adyacente(v1, v2)?"Si son adyacentes":"No son adyacentes");
+					} catch (Exception e) {
+						System.out.println("Error, deben existir ambos vertices");
+					}
+					break;
+				case 4:
+					System.out.println("Nombre del vertice a recorrer: ");
+					v1=input.nextLine();
+					try {
+						g.recorrerAnchura(g, v1);
+						System.out.println();
+					} catch (Exception e) {
+						System.out.println("El vertice no existe");
+					}
+					break;
+				default:
+					break;
+				}
+			}
+		} while (!salir);
+		System.out.println("Fin de ejecucion");
 	
 	
 	
