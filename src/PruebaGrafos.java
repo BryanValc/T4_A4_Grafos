@@ -1,5 +1,14 @@
 import java.util.Scanner;
 
+/*
+ * 
+ * Codigo principal sacado de:
+ * Estructura_de_datos_en_java_Joyanes_1ed
+ * 
+ * 
+ * */
+
+
 class Menu{
 	static Scanner input = new Scanner(System.in);
 	public static int validacionNatural() {
@@ -169,8 +178,8 @@ class Nodo {
 	Nodo siguiente;
 	int dato;
 	
-	public Nodo(Object x){
-		elemento = x;
+	public Nodo(Object y){
+		elemento = y;
 		siguiente = null;
 		}
 	public Nodo(int x){
@@ -262,12 +271,12 @@ class GrafoAdcia{
 	int numVerts;
     static int maxVerts = 20;
     Vertice [] tablAdc;
-    
-    public GrafoAdcia(int mx){
+        public GrafoAdcia(int mx){
     	tablAdc = new Vertice[mx];
         numVerts = 0;
         maxVerts = mx;
     }
+    
     public int numVertice(String vs) {
         Vertice v = new Vertice(vs);
         boolean encontrado = false;
